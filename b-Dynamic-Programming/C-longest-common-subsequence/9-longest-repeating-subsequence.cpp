@@ -5,7 +5,7 @@ using namespace std;
 
 int static t2[1001][1001];
 
-int topDownLCS(string s1, int m, string s2, int n){
+int topDownLRS(string s1, int m, string s2, int n){
   for(int i = 0; i <= m; i++){
     for(int j = 0; j <= n; j++){
       if(i == 0 || j == 0)
@@ -29,7 +29,7 @@ int main(){
   int m = 7;
   string s2 = s1;
 
-  cout<<topDownLCS(s1, m, s2, m)<<endl;
+  cout<<topDownLRS(s1, m, s2, m)<<endl;
 
   return 0;
 }
