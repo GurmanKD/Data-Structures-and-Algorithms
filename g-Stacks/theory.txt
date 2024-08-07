@@ -1,0 +1,25 @@
+Identification:
+Good question of array generally uses stack or heap.
+
+For heap, you'll have a need to sort the array.
+
+for(int i = 0; i < n; i++){
+  for(int j = 0; j < n; j++){
+    // simple O(n^2) loop
+  }
+}
+
+for(int i = 0; i < n; i++){
+  for(int j = 0; j < i; j++){
+    // dependent O(n^2) loop
+    // j is dependent on i
+  }
+}
+
+4 forms of dependent loop {j = fun(i)}:
+j -> 0 to i; j++
+j -> i to 0; j--
+j -> i to n; j++
+j -> n to i; j--
+
+if you have written any of these, you can 100% write a better solution using stacks
