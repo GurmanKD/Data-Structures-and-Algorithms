@@ -1,9 +1,3 @@
-/*
-Find the largest rectangular area possible in a given histogram where the largest rectangle can be made of a number of contiguous bars. For simplicity, assume that all bars have same width and the width is 1 unit.
-*/
-
-/* a building can be expanded only if the height of the neighboring building is greater than or equal to the height of that building */
-
 #include<iostream>
 #include<vector>
 #include<stack>
@@ -13,6 +7,7 @@ using namespace std;
 
 vector<int> findNSLarr(vector<int> v) {
     int n = v.size();
+    int pseudoIndex = -1;
     stack<pair<int, int>> st; // {nsl, index}
     vector<int> NSLarr;
 
@@ -21,7 +16,7 @@ vector<int> findNSLarr(vector<int> v) {
             st.pop();
         }
         if (st.empty()) {
-            NSLarr.push_back(-1);
+            NSLarr.push_back(pseudoIndex);
         } else {
             NSLarr.push_back(st.top().second);
         }
@@ -32,6 +27,7 @@ vector<int> findNSLarr(vector<int> v) {
 
 vector<int> findNSRarr(vector<int> v) {
     int n = v.size();
+    int pseudoIndex = n;
     stack<pair<int, int>> st; // {nsr, index}
     vector<int> NSRarr;
 
@@ -40,7 +36,7 @@ vector<int> findNSRarr(vector<int> v) {
             st.pop();
         }
         if (st.empty()) {
-            NSRarr.push_back(n); // Use 'n' instead of '-1'
+            NSRarr.push_back(pseudoIndex);
         } else {
             NSRarr.push_back(st.top().second);
         }
