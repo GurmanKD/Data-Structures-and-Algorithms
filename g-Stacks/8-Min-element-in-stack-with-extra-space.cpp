@@ -4,6 +4,7 @@
 using namespace std;
 
 stack<int> s, ss;
+// ss is supporting stack
 
 void pushInMin(int ele){
   s.push(ele);
