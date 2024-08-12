@@ -13,7 +13,7 @@ vector<int> findKclosest(vector<int>v, int k, int x){
   vector<int>kClosests;
   priority_queue<pair<int, int>>maxHeap; // {abs diff with x, no.}
   // we took max heap because, we need elements with min absolute difference with x to remain in the heap
-  // ie, we want to pop the elements with max absolute diff with x(so the should be on the top)
+  // ie, we want to pop the elements with max absolute diff with x(so the max should be on the top)
   for(int i=0; i<v.size(); i++){
     maxHeap.push({abs(v[i]-x), v[i]});
     if(maxHeap.size()>k){
@@ -24,7 +24,6 @@ vector<int> findKclosest(vector<int>v, int k, int x){
     kClosests.push_back(maxHeap.top().second);
     maxHeap.pop();
   }
-
   return kClosests;
 }
 
