@@ -20,7 +20,7 @@ vector<int> findKclosest(vector<int>v, int k, int x){
       maxHeap.pop();
     }
   }
-  for(int i=0; i<k; i++){
+  while(maxHeap.size()>0){
     kClosests.push_back(maxHeap.top().second);
     maxHeap.pop();
   }
