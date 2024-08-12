@@ -16,6 +16,7 @@ vector<pair<int, int>> findKclosest(vector<pair<int, int>>points, int k){
   // ie, we want to pop the elements with max distance (so, the max should be on the top)
   for(int i=0; i<points.size(); i++){
     float dist=sqrt(pow(points[i].first, 2)+pow(points[i].second, 2));
+    // even if we dont take sqrt, the relative order will remain same
     maxHeap.push({dist, points[i]});
     if(maxHeap.size()>k){
       maxHeap.pop();
