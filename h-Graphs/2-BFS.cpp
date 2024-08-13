@@ -8,6 +8,11 @@ An undirected graph is a graph where all the edges are bidirectional, i.e., they
 A graph is disconnected if at least two vertices of the graph are not connected by a path.
 */
 
+/*
+time complexity: O(n+e)
+space complexity: O(n+e)
+*/
+
 #include<iostream>
 #include<unordered_map>
 #include<list>
