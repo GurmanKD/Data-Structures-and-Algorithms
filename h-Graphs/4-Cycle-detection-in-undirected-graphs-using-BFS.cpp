@@ -1,3 +1,5 @@
+// time and space complexity: linear
+
 #include<iostream>
 #include<unordered_map>
 #include<list>
