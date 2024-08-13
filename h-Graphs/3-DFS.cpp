@@ -3,6 +3,8 @@ Given an undirected and disconnected graph G(V, E), containing 'V' vertices and 
 Print its DFS traversal.
 */
 
+// time and space complexity: linear
+
 #include<iostream>
 #include<unordered_map>
 #include<list>
