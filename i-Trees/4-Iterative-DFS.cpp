@@ -60,7 +60,8 @@ vector<int> iterativeInorder(Node* root){
   return inorder;
 }
 
-vector<int> iterativePostorder(Node* root){
+// using 2 stacks
+vector<int> iterativePostorder1(Node* root){
   vector<int>postorder;
   stack<Node*> s1, s2;
   s1.push(root);
@@ -79,6 +80,51 @@ vector<int> iterativePostorder(Node* root){
   }
   return postorder;
 }
+
+// using 1 stack
+vector<int> iterativePostorder2(Node* root){
+  vector<int>postorder;
+  stack<Node*> st;
+
+  Node* curr = root; // Pointer to track the current node, starting with the root
+
+  Node* temp = NULL; // Temporary pointer to track the right child of nodes
+
+  // until there are no more nodes to process
+  while(curr!=NULL || !st.empty()){
+    
+    // Traverse the left subtree
+    if(curr!=NULL){
+      st.push(curr);
+      curr = curr->left;
+    }
+    else{
+      // Check the right subtree
+      temp = st.top()->right;
+
+      // If the current node has no right subtree or the right subtree has already been traversed
+      if(temp == NULL){
+        temp = st.top();
+        st.pop();
+        postorder.push_back(temp->data);
+
+        // to handle nodes whose right subtrees have already been processed
+        while(!st.empty() && temp == st.top()->right){
+          temp = st.top();
+          st.pop();
+          postorder.push_back(temp->data);
+        }
+      }
+      else {
+        // If the current node has a right subtree that hasn't been processed yet, move to it
+        curr = temp;
+      }
+    }
+  }
+  
+  return postorder;
+}
+
 int main(){
   struct Node*root = new Node(1);
   root->left = new Node(2);
@@ -97,10 +143,17 @@ int main(){
   }
   cout<<endl;
 
-  cout<<"postorder traversal:"<<endl;
-  vector<int>postorder = iterativePostorder(root);
-  for(int i=0; i<postorder.size(); i++){
-    cout<<postorder[i]<<" ";
+  cout<<"postorder traversal (using 2 stacks):"<<endl;
+  vector<int>postorder1 = iterativePostorder1(root);
+  for(int i=0; i<postorder1.size(); i++){
+    cout<<postorder1[i]<<" ";
+  }
+  cout<<endl;
+
+  cout<<"postorder traversal (using 1 stacks):"<<endl;
+  vector<int>postorder2 = iterativePostorder2(root);
+  for(int i=0; i<postorder2.size(); i++){
+    cout<<postorder2[i]<<" ";
   }
   cout<<endl;
 
