@@ -36,6 +36,9 @@ Node* insertAtHead(Node*head, int ele){
 }
 
 Node* insertAtTail(Node* head, int ele){
+if(head==NULL)
+  return new Node(ele);
+
   Node* temp = head;
   while(temp->next){
     temp=temp->next;
@@ -43,6 +46,24 @@ Node* insertAtTail(Node* head, int ele){
 
   Node* newNode = new Node(ele);
   temp->next=newNode;
+  return head;
+}
+
+Node* insertAtKthIndex(Node* head, int k, int ele){
+  if(head==NULL) return head;
+
+  Node* newNode = new Node(ele);
+
+  int count = 0;
+  Node*temp = head;
+  while(count<k){
+    temp=temp->next;
+    count++;
+  }
+
+  newNode->next=temp->next;
+  temp->next=newNode;
+
   return head;
 }
 
@@ -73,6 +94,16 @@ int main(){
     cout<<"after insertion at tail: "<< endl;
     temp = ans;
     for (int i = 0; i < arr.size()+2; i++) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+
+    ans = insertAtKthIndex(ans, 2, 100);
+
+    cout<<"after insertion 2nd index: "<< endl;
+    temp = ans;
+    for (int i = 0; i < arr.size()+3; i++) {
         cout << temp->data << " ";
         temp = temp->next;
     }
