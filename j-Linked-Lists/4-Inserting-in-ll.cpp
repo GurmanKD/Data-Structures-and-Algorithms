@@ -55,27 +55,25 @@ Node* insertAtKthIndex(Node* head, int k, int ele){
   if(head==NULL){ 
     if(k==1)
       return new Node(ele);
+    else
+      return head;
   }
 
-  Node* newNode = new Node(ele);
-
   if(k==1){
-    newNode->next=head;
-    head=newNode;
-    return head;
+    return new Node(ele, head);
   }
 
   int count = 0;
   Node*temp = head;
-  while(count<k){
-    temp=temp->next;
+  while(temp!=NULL){
     count++;
+    if(count==k-1){
+      Node*x = new Node(ele, temp->next);
+      temp->next = x;
+      break;
+    }
+    temp=temp->next;
   }
-
-  newNode->next=temp->next;
-  temp->next=newNode;
-
-  return head;
 }
 
 int main(){
