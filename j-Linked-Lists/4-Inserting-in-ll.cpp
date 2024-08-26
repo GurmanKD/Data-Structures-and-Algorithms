@@ -35,6 +35,17 @@ Node* insertAtHead(Node*head, int ele){
     return temp;
 }
 
+Node* insertAtTail(Node* head, int ele){
+  Node* temp = head;
+  while(temp->next){
+    temp=temp->next;
+  }
+
+  Node* newNode = new Node(ele);
+  temp->next=newNode;
+  return head;
+}
+
 int main(){
   vector<int> arr = {1, 2, 3, 4};
     Node* ans = convertArr2ll(arr);
@@ -52,6 +63,16 @@ int main(){
     cout<<"after insertion at head: "<< endl;
     temp = ans;
     for (int i = 0; i < arr.size()+1; i++) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+
+    ans = insertAtTail(ans, 100);
+
+    cout<<"after insertion at tail: "<< endl;
+    temp = ans;
+    for (int i = 0; i < arr.size()+2; i++) {
         cout << temp->data << " ";
         temp = temp->next;
     }
