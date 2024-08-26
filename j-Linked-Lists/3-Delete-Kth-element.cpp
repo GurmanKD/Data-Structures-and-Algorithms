@@ -30,6 +30,7 @@ Node* convertArr2ll(vector<int>arr){
   return head;
 }
 
+// deleting by index
 Node* deleteKth(Node* head, int k){
   if(head==NULL)
     return head;
@@ -56,6 +57,30 @@ Node* deleteKth(Node* head, int k){
   return head;
 }
 
+// deleting by value
+Node* deleteEle(Node* head, int ele){
+  if(head==NULL) return head;
+
+  if(head->data == ele ){
+    Node*temp=head;
+    head=head->next;
+    delete temp;
+    return head;
+  }
+
+  Node*temp=head, *prev=NULL;
+  while(temp!=NULL){
+    if(temp->data == ele){
+      prev->next=prev->next->next;
+      delete temp;
+      break;
+    }
+    prev=temp;
+    temp=temp->next;
+  }
+  return head;
+}
+
 int main(){
   vector<int> arr = {1, 2, 3, 4};
     Node* ans = convertArr2ll(arr);
@@ -68,11 +93,12 @@ int main(){
     }
     cout << endl;
 
-    deleteKth(ans, 2);
+    ans = deleteKth(ans, 2);
+    ans = deleteEle(ans, 1);
 
     cout<<"after deletion: "<< endl;
     temp = ans;
-    for (int i = 0; i < arr.size()-1; i++) {
+    for (int i = 0; i < arr.size()-2; i++) {
         cout << temp->data << " ";
         temp = temp->next;
     }
