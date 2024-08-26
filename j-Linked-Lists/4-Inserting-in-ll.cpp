@@ -77,6 +77,29 @@ Node* insertAtKthIndex(Node* head, int k, int ele){
   return head;
 }
 
+Node* insertBeforeValue(Node* head, int val, int ele){
+  // k bw 1 to size
+
+  if(head==NULL){ 
+    return head;
+  }
+
+  if(head->data == val){
+    return new Node(ele, head);
+  }
+
+  Node*temp = head;
+  while(temp->next != NULL){
+    if(temp->next->data == val){
+      Node*x = new Node(ele, temp->next);
+      temp->next = x;
+      break;
+    }
+    temp=temp->next;
+  }
+  return head;
+}
+
 int main(){
   vector<int> arr = {1, 2, 3, 4};
     Node* ans = convertArr2ll(arr);
@@ -114,6 +137,16 @@ int main(){
     cout<<"after insertion 2nd index: "<< endl;
     temp = ans;
     for (int i = 0; i < arr.size()+3; i++) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+
+    ans = insertBeforeValue(ans, 2, 100);
+
+    cout<<"after insertion before 2: "<< endl;
+    temp = ans;
+    for (int i = 0; i < arr.size()+4; i++) {
         cout << temp->data << " ";
         temp = temp->next;
     }
