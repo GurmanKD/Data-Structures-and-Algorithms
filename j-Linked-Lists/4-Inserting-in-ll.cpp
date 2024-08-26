@@ -74,6 +74,7 @@ Node* insertAtKthIndex(Node* head, int k, int ele){
     }
     temp=temp->next;
   }
+  return head;
 }
 
 int main(){
