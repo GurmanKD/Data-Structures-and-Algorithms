@@ -50,9 +50,20 @@ if(head==NULL)
 }
 
 Node* insertAtKthIndex(Node* head, int k, int ele){
-  if(head==NULL) return head;
+  // k bw 1 to size
+
+  if(head==NULL){ 
+    if(k==1)
+      return new Node(ele);
+  }
 
   Node* newNode = new Node(ele);
+
+  if(k==1){
+    newNode->next=head;
+    head=newNode;
+    return head;
+  }
 
   int count = 0;
   Node*temp = head;
