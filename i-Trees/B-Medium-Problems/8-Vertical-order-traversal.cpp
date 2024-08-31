@@ -17,9 +17,9 @@ struct Node{
 };
 
 vector<vector<int>> verticalTraversal(Node*root){
-  map<int, map<int, multiset<int>>> nodes;// {vlevel, {hlevel, node on that v/h}}
+  map<int, map<int, multiset<int>>> nodes;// {vlevel, {hlevel, node on that v/h}} =>vLevel is col no(x); hLevel is row no(y)
   // multiset because there can be 2 same nodes overlapping and set would only keep unique values
-  queue<pair<Node*, pair<int, int>>> todoQ; // {node, {hLevel, vLevel}}
+  queue<pair<Node*, pair<int, int>>> todoQ; // {node, {vLevel, hLevel}}
 
   todoQ.push({root, {0,0}});
   while(!todoQ.empty()){
